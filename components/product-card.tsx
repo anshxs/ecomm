@@ -17,7 +17,7 @@ export function ProductCard({ name, price, image, category }: ProductCardProps) 
 
   return (
     <div className="group space-y-4 cursor-pointer">
-      <div className="relative overflow-hidden bg-secondary aspect-square">
+      <div className="relative overflow-hidden bg-secondary rounded-2xl aspect-square">
         <Image
           src={image || "/placeholder.svg"}
           alt={name}
@@ -43,7 +43,7 @@ export function ProductCard({ name, price, image, category }: ProductCardProps) 
         <h3 className="text-lg font-light">{name}</h3>
         <p className="text-base font-light">{price}</p>
       </div>
-      <button className="w-full py-3 border border-foreground text-sm font-medium tracking-wider hover:bg-foreground hover:text-background transition">
+      <button className="w-full py-3 border rounded-2xl border-foreground text-sm font-medium tracking-wider hover:bg-foreground hover:text-background transition">
         ADD TO CART
       </button>
     </div>

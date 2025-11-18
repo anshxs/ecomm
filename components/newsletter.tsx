@@ -1,14 +1,17 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
 export function Newsletter() {
   const [email, setEmail] = useState('')
+  const router = useRouter()
   const [submitted, setSubmitted] = useState(false)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     setSubmitted(true)
+    router.push(`mailto:${email}`)
     setEmail('')
     setTimeout(() => setSubmitted(false), 3000)
   }
@@ -32,11 +35,11 @@ export function Newsletter() {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email"
             required
-            className="flex-1 px-6 py-3 bg-secondary border border-border text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-foreground"
+            className="flex-1 px-6 py-3 bg-secondary rounded-2xl border border-border text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-foreground"
           />
           <button
             type="submit"
-            className="px-8 py-3 bg-foreground text-background text-sm font-medium tracking-wider hover:opacity-80 transition whitespace-nowrap"
+            className="px-8 py-3 bg-foreground rounded-2xl text-background text-sm font-medium tracking-wider hover:opacity-80 transition whitespace-nowrap"
           >
             {submitted ? 'Subscribed' : 'Subscribe'}
           </button>

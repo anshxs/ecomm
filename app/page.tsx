@@ -3,6 +3,7 @@ import { Hero } from '@/components/hero'
 import { ProductGrid } from '@/components/product-grid'
 import { Newsletter } from '@/components/newsletter'
 import { Footer } from '@/components/footer'
+import { MarqueeDemo } from '@/components/demomar'
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <main>
         <Hero />
         <ProductGrid />
+        <MarqueeDemo />
         <Newsletter />
       </main>
       <Footer />
