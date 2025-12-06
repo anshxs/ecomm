@@ -7,10 +7,18 @@ import { useState } from 'react'
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
+  const handleLogoClick = () => {
+    window.alert('Welcome to MINIMAL! 👋')
+  }
+
   return (
     <header className="sticky top-0 z-100 bg-white/50 backdrop-blur-lg border-b border-border">
       <nav className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
-        <Link href="/" className="text-lg font-light tracking-widest">
+        <Link 
+          href="/" 
+          className="text-lg font-light tracking-widest"
+          onClick={handleLogoClick}
+        >
           MINIMAL
         </Link>
         

@@ -15,8 +15,12 @@ interface ProductCardProps {
 export function ProductCard({ name, price, image, category }: ProductCardProps) {
   const [isFavorited, setIsFavorited] = useState(false)
 
+  const handleProductClick = () => {
+    window.alert(`You clicked on: ${name} - ${price} 🛍️`)
+  }
+
   return (
-    <div className="group space-y-4 cursor-pointer">
+    <div className="group space-y-4 cursor-pointer" onClick={handleProductClick}>
       <div className="relative overflow-hidden bg-secondary rounded-2xl aspect-square">
         <Image
           src={image || "/placeholder.svg"}
@@ -25,7 +29,11 @@ export function ProductCard({ name, price, image, category }: ProductCardProps) 
           className="object-cover group-hover:scale-105 transition duration-500"
         />
         <button
-          onClick={() => setIsFavorited(!isFavorited)}
+          onClick={(e) => {
+            e.stopPropagation()
+            setIsFavorited(!isFavorited)
+            window.alert(isFavorited ? 'Removed from favorites! 💔' : 'Added to favorites! ❤️')
+          }}
           className="absolute top-4 right-4 p-2 bg-background rounded-full opacity-0 group-hover:opacity-100 transition"
           aria-label="Add to favorites"
         >
@@ -43,7 +51,13 @@ export function ProductCard({ name, price, image, category }: ProductCardProps) 
         <h3 className="text-lg font-light">{name}</h3>
         <p className="text-base font-light">{price}</p>
       </div>
-      <button className="w-full py-3 border rounded-2xl border-foreground text-sm font-medium tracking-wider hover:bg-foreground hover:text-background transition">
+      <button 
+        className="w-full py-3 border rounded-2xl border-foreground text-sm font-medium tracking-wider hover:bg-foreground hover:text-background transition"
+        onClick={(e) => {
+          e.stopPropagation()
+          window.alert(`${name} added to cart! 🛒`)
+        }}
+      >
         ADD TO CART
       </button>
     </div>

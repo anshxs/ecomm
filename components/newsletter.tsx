@@ -10,6 +10,7 @@ export function Newsletter() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    window.alert(`Thank you for subscribing with: ${email} 📧`)
     setSubmitted(true)
     router.push(`mailto:${email}`)
     setEmail('')
